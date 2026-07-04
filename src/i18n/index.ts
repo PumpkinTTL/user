@@ -127,7 +127,12 @@ const messages = {
                 uptime: '在线率',
                 support: '技术支持',
             },
+            noticeCard: {
+                title: '站点公告',
+                description: '欢迎使用我们的数字商品商店，所有商品均经过严格筛选，支付后自动交付。如有疑问请联系客服。',
+            },
             featured: {
+                eyebrow: '精选推荐',
                 title: '精选商品',
                 description: '探索我们精心挑选的优质数字资产系列。',
                 empty: '暂无商品',
@@ -1813,6 +1818,10 @@ const messages = {
                 premiumProducts: '精選商品',
                 uptime: '在線率',
                 support: '技術支援',
+            },
+            noticeCard: {
+                title: '站點公告',
+                description: '歡迎使用我們的數位商品商店，所有商品均經過嚴格篩選，支付後自動交付。如有疑問請聯繫客服。',
             },
             featured: {
                 title: '精選商品',
@@ -3500,6 +3509,10 @@ const messages = {
                 premiumProducts: 'Premium Products',
                 uptime: 'Uptime',
                 support: 'Support',
+            },
+            noticeCard: {
+                title: 'Announcement',
+                description: 'Welcome to our digital goods store. All products are carefully selected and automatically delivered after payment. Contact support if you have any questions.',
             },
             featured: {
                 title: 'Featured Products',

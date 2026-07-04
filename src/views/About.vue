@@ -1,14 +1,8 @@
 <template>
   <div
-    class="about-page min-h-screen bg-background text-foreground pt-20 pb-16">
+    class="about-page min-h-screen bg-background text-foreground pt-24 pb-16">
     <div class="container mx-auto px-4 max-w-4xl">
-      <div class="text-center mb-16 mt-12">
-        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight text-foreground">{{ heroTitle }}</h1>
-        <p
-          class="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed border-b pb-8">
-          {{ heroSubtitle }}
-        </p>
-      </div>
+      <PageHeader :title="heroTitle" :subtitle="heroSubtitle" />
 
       <Card
         class="backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
@@ -70,6 +64,7 @@
 <script setup lang="ts">
 import { Check } from 'lucide-vue-next'
 import { Card } from '@/components/ui/card'
+import PageHeader from '../components/PageHeader.vue'
 import { useAbout } from '../composables/useAbout'
 
 const {

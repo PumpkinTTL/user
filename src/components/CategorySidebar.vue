@@ -1,11 +1,9 @@
 <template>
-  <!-- Mobile Filter Button -->
-  <Button variant="secondary" @click="$emit('update:showDrawer', true)"
-    class="lg:hidden gap-2 rounded-xl text-sm font-medium min-h-[44px]">
-    <Filter class="w-4 h-4" />
-    {{ t('products.filter') }}
-    <span v-if="selectedCategory" class="w-2 h-2 rounded-full bg-primary"></span>
-  </Button>
+  <!-- Mobile Search Button (固定贴左边) -->
+  <button @click="$emit('update:showDrawer', true)"
+    class="lg:hidden fixed left-0 top-24 z-30 flex items-center justify-center w-10 h-10 rounded-r-lg bg-card border border-l-0 shadow-sm active:scale-95 transition-transform">
+    <Search class="w-4 h-4 text-muted-foreground" />
+  </button>
 
   <!-- Mobile Filter Drawer Overlay -->
   <Transition
@@ -213,7 +211,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { Filter, X, ChevronRight } from 'lucide-vue-next'
+import { Filter, Search, X, ChevronRight } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { getImageUrl } from '../utils/image'

@@ -1,15 +1,9 @@
 <template>
   <div
-    class="notice-page min-h-screen bg-background text-foreground pt-20 pb-16">
+    class="notice-page min-h-screen bg-background text-foreground pt-24 pb-16">
     <div class="container mx-auto px-4">
       <!-- Page Header -->
-      <div class="mb-16 mt-12 text-center">
-        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight text-foreground">{{ t('nav.notice') }}</h1>
-        <p
-          class="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed border-b pb-8">
-          {{ t('notice.subtitle') }}
-        </p>
-      </div>
+      <PageHeader :title="t('nav.notice')" :subtitle="t('notice.subtitle')" />
 
       <!-- Loading State -->
       <div v-if="loading" class="space-y-4 max-w-4xl mx-auto">
@@ -81,6 +75,7 @@ import { Bell, ChevronRight } from 'lucide-vue-next'
 import { getImageUrl } from '../utils/image'
 import { Badge } from '@/components/ui/badge'
 import EmptyState from '../components/EmptyState.vue'
+import PageHeader from '../components/PageHeader.vue'
 import PaginationNav from '../components/PaginationNav.vue'
 import { usePostList } from '../composables/usePostList'
 
