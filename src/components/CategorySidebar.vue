@@ -211,7 +211,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { Filter, Search, X, ChevronRight } from 'lucide-vue-next'
+import { Search, X, ChevronRight } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { getImageUrl } from '../utils/image'
