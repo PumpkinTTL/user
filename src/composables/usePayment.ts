@@ -274,6 +274,14 @@ export function usePayment() {
   const qrUsingPayLinkFallback = computed(() => Boolean(!qrCodeContent.value && qrFallbackContent.value))
   const showQRCode = computed(() => interactionMode.value === 'qr' && Boolean(qrDisplayContent.value))
 
+  // 支付宝移动端唤起 APP（保留扫码，额外提供唤起按钮）
+  const isAlipayChannel = computed(() => paymentChannelType.value === 'alipay')
+  const isMobile = computed(() => typeof window !== 'undefined' && window.innerWidth < 768)
+  const openAlipayApp = () => {
+    const url = qrCodeContent.value || payLink.value
+    if (url) window.location.href = url
+  }
+
   const qrImageUrl = ref('')
   const qrRenderVersion = ref(0)
 
@@ -1422,6 +1430,9 @@ export function usePayment() {
     qrUsingPayLinkFallback,
     showQRCode,
     qrImageUrl,
+    isAlipayChannel,
+    isMobile,
+    openAlipayApp,
     // status
     orderExpired,
     orderCanceled,
