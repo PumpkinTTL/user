@@ -280,8 +280,17 @@ export function usePayment() {
   const openAlipayApp = () => {
     const url = qrCodeContent.value || payLink.value
     if (!url) return
-    // 用支付宝官方 URL Scheme 直接唤起 APP，避免经过浏览器网页中转
-    window.location.href = `alipays://platformapi/startapp?saId=10000007&url=${encodeURIComponent(url)}`
+    // 用支付宝官方 scheme 唤起 APP（appId=20000067 是支付宝内置 H5 容器）
+    const scheme = `alipays://platformapi/startapp?appId=20000067&url=${encodeURIComponent(url)}`
+    // 兜底：3 秒内 APP 未唤起（页面仍可见），降级直接跳转支付链接
+    const timer = window.setTimeout(() => {
+      if (!document.hidden) window.location.href = url
+    }, 3000)
+    document.addEventListener('visibilitychange', function onVis() {
+      if (document.hidden) window.clearTimeout(timer)
+      document.removeEventListener('visibilitychange', onVis)
+    }, { once: true })
+    window.location.href = scheme
   }
 
   const qrImageUrl = ref('')

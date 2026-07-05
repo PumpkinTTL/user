@@ -96,13 +96,13 @@
                 <button
                   v-if="isAlipayChannel && isMobile"
                   type="button"
-                  class="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#1677FF] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0E5FD8] active:scale-95"
+                  class="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#1677FF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0E5FD8] active:scale-95"
                   @click="openAlipayApp"
                 >
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M22.953 8.638c-.852-3.86-4.298-6.117-9.475-6.117-5.142 0-9.273 2.834-9.273 6.96 0 3.062 2.184 4.973 6.39 5.597l3.275.484c2.236.33 3.196.862 3.196 1.948 0 1.302-1.376 2.063-3.686 2.063-2.708 0-4.375-.96-5.042-2.957L4.18 18.235c1.328 3.275 4.43 4.852 9.024 4.852 5.643 0 9.276-2.834 9.276-7.182 0-3.088-1.84-4.85-6.083-5.476l-3.485-.647c-2.437-.456-3.39-.91-3.39-2.028 0-1.24 1.24-1.974 3.286-1.974 2.385 0 3.883.847 4.516 2.585l5.638-1.727z" />
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19.695 15.07c3.426 1.158 4.203 1.22 4.203 1.22V3.846c0-2.124-1.705-3.845-3.81-3.845H3.914C1.808.001.102 1.722.102 3.846v16.31c0 2.123 1.706 3.845 3.813 3.845h16.173c2.105 0 3.81-1.722 3.81-3.845v-.157s-6.19-2.602-9.315-4.119c-2.096 2.602-4.8 4.181-7.607 4.181-4.75 0-6.361-4.19-4.112-6.949.49-.602 1.324-1.175 2.617-1.497 2.025-.502 5.247.313 8.266 1.317a16.796 16.796 0 0 0 1.341-3.302H5.781v-.952h4.799V6.975H4.77v-.953h5.81V3.591s0-.409.411-.409h2.347v2.84h5.744v.951h-5.744v1.704h4.69a19.453 19.453 0 0 1-1.986 5.06c1.424.52 2.702 1.011 3.654 1.333m-13.81-2.032c-.596.06-1.71.325-2.321.869-1.83 1.608-.735 4.55 2.968 4.55 2.151 0 4.301-1.388 5.99-3.61-2.403-1.182-4.438-2.028-6.637-1.809" />
                   </svg>
-                  唤起支付宝 APP
+                  打开支付宝支付
                 </button>
                 <div v-if="qrUsingPayLinkFallback" class="mt-3 text-xs text-muted-foreground">
                   {{ t('payment.qrFallbackHint') }}
@@ -416,13 +416,13 @@
                 <button
                   v-if="isAlipayChannel && isMobile"
                   type="button"
-                  class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1677FF] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0E5FD8] active:scale-95"
+                  class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1677FF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0E5FD8] active:scale-95"
                   @click="openAlipayApp"
                 >
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M22.953 8.638c-.852-3.86-4.298-6.117-9.475-6.117-5.142 0-9.273 2.834-9.273 6.96 0 3.062 2.184 4.973 6.39 5.597l3.275.484c2.236.33 3.196.862 3.196 1.948 0 1.302-1.376 2.063-3.686 2.063-2.708 0-4.375-.96-5.042-2.957L4.18 18.235c1.328 3.275 4.43 4.852 9.024 4.852 5.643 0 9.276-2.834 9.276-7.182 0-3.088-1.84-4.85-6.083-5.476l-3.485-.647c-2.437-.456-3.39-.91-3.39-2.028 0-1.24 1.24-1.974 3.286-1.974 2.385 0 3.883.847 4.516 2.585l5.638-1.727z" />
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19.695 15.07c3.426 1.158 4.203 1.22 4.203 1.22V3.846c0-2.124-1.705-3.845-3.81-3.845H3.914C1.808.001.102 1.722.102 3.846v16.31c0 2.123 1.706 3.845 3.813 3.845h16.173c2.105 0 3.81-1.722 3.81-3.845v-.157s-6.19-2.602-9.315-4.119c-2.096 2.602-4.8 4.181-7.607 4.181-4.75 0-6.361-4.19-4.112-6.949.49-.602 1.324-1.175 2.617-1.497 2.025-.502 5.247.313 8.266 1.317a16.796 16.796 0 0 0 1.341-3.302H5.781v-.952h4.799V6.975H4.77v-.953h5.81V3.591s0-.409.411-.409h2.347v2.84h5.744v.951h-5.744v1.704h4.69a19.453 19.453 0 0 1-1.986 5.06c1.424.52 2.702 1.011 3.654 1.333m-13.81-2.032c-.596.06-1.71.325-2.321.869-1.83 1.608-.735 4.55 2.968 4.55 2.151 0 4.301-1.388 5.99-3.61-2.403-1.182-4.438-2.028-6.637-1.809" />
                   </svg>
-                  唤起支付宝 APP
+                  打开支付宝支付
                 </button>
               </div>
               <div class="text-sm text-muted-foreground space-y-3">
