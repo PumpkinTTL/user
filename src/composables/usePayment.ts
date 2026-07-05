@@ -286,9 +286,8 @@ export function usePayment() {
     const timer = window.setTimeout(() => {
       if (!document.hidden) window.location.href = url
     }, 3000)
-    document.addEventListener('visibilitychange', function onVis() {
+    document.addEventListener('visibilitychange', () => {
       if (document.hidden) window.clearTimeout(timer)
-      document.removeEventListener('visibilitychange', onVis)
     }, { once: true })
     window.location.href = scheme
   }
