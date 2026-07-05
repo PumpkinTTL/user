@@ -8,10 +8,6 @@
     @click="$emit('click', product.slug)">
     <!-- Image Area -->
     <div class="aspect-[4/3] overflow-hidden bg-muted relative shrink-0">
-      <div
-        class="absolute inset-0 z-10 transition-colors duration-300"
-        :class="isSoldOut(product) ? 'bg-black/15' : 'bg-black/15 group-hover:bg-black/5'"
-      ></div>
       <img v-if="displayImageSrc && !imageErrored" :src="displayImageSrc"
         :alt="getLocalizedText(product.title)" loading="lazy" decoding="async"
         class="w-full h-full object-cover transform transition-transform duration-700 ease-out"
