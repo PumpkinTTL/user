@@ -279,7 +279,9 @@ export function usePayment() {
   const isMobile = computed(() => typeof window !== 'undefined' && window.innerWidth < 768)
   const openAlipayApp = () => {
     const url = qrCodeContent.value || payLink.value
-    if (url) window.location.href = url
+    if (!url) return
+    // 用支付宝官方 URL Scheme 直接唤起 APP，避免经过浏览器网页中转
+    window.location.href = `alipays://platformapi/startapp?saId=10000007&url=${encodeURIComponent(url)}`
   }
 
   const qrImageUrl = ref('')

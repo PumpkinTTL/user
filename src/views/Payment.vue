@@ -93,17 +93,17 @@
                 <div class="w-full max-w-[280px] sm:max-w-[240px] aspect-square rounded-xl overflow-hidden bg-white p-2">
                   <img :src="qrImageUrl" alt="QR Code" class="w-full h-full object-contain" />
                 </div>
-                <Button
+                <button
                   v-if="isAlipayChannel && isMobile"
-                  variant="secondary"
-                  class="mt-4 inline-flex items-center gap-2"
+                  type="button"
+                  class="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#1677FF] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0E5FD8] active:scale-95"
                   @click="openAlipayApp"
                 >
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="#1677FF" aria-hidden="true">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M22.953 8.638c-.852-3.86-4.298-6.117-9.475-6.117-5.142 0-9.273 2.834-9.273 6.96 0 3.062 2.184 4.973 6.39 5.597l3.275.484c2.236.33 3.196.862 3.196 1.948 0 1.302-1.376 2.063-3.686 2.063-2.708 0-4.375-.96-5.042-2.957L4.18 18.235c1.328 3.275 4.43 4.852 9.024 4.852 5.643 0 9.276-2.834 9.276-7.182 0-3.088-1.84-4.85-6.083-5.476l-3.485-.647c-2.437-.456-3.39-.91-3.39-2.028 0-1.24 1.24-1.974 3.286-1.974 2.385 0 3.883.847 4.516 2.585l5.638-1.727z" />
                   </svg>
-                  唤起支付宝
-                </Button>
+                  唤起支付宝 APP
+                </button>
                 <div v-if="qrUsingPayLinkFallback" class="mt-3 text-xs text-muted-foreground">
                   {{ t('payment.qrFallbackHint') }}
                 </div>
@@ -413,17 +413,17 @@
               <div
                 class="bg-secondary border rounded-xl p-4 flex flex-col items-center justify-center gap-4">
                 <img :src="qrImageUrl" alt="QR Code" class="w-48 h-48 object-contain" />
-                <Button
+                <button
                   v-if="isAlipayChannel && isMobile"
-                  variant="secondary"
-                  class="inline-flex items-center gap-2"
+                  type="button"
+                  class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1677FF] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0E5FD8] active:scale-95"
                   @click="openAlipayApp"
                 >
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="#1677FF" aria-hidden="true">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M22.953 8.638c-.852-3.86-4.298-6.117-9.475-6.117-5.142 0-9.273 2.834-9.273 6.96 0 3.062 2.184 4.973 6.39 5.597l3.275.484c2.236.33 3.196.862 3.196 1.948 0 1.302-1.376 2.063-3.686 2.063-2.708 0-4.375-.96-5.042-2.957L4.18 18.235c1.328 3.275 4.43 4.852 9.024 4.852 5.643 0 9.276-2.834 9.276-7.182 0-3.088-1.84-4.85-6.083-5.476l-3.485-.647c-2.437-.456-3.39-.91-3.39-2.028 0-1.24 1.24-1.974 3.286-1.974 2.385 0 3.883.847 4.516 2.585l5.638-1.727z" />
                   </svg>
-                  唤起支付宝
-                </Button>
+                  唤起支付宝 APP
+                </button>
               </div>
               <div class="text-sm text-muted-foreground space-y-3">
                 <div class="text-foreground font-semibold">{{ paymentGuideTitle }}</div>
