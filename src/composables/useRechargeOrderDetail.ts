@@ -6,6 +6,7 @@ import { walletAPI } from '../api/wallet'
 import { useTelegramMiniAppStore } from '../stores/telegramMiniApp'
 import { copyText } from '../utils/clipboard'
 import { basisPointsToPercent, rateToBasisPoints } from '../utils/money'
+import { isAlipayChannelType, isMobileViewport, openAlipayApp as openAlipayAppUrl } from '../utils/alipay'
 import type { BadgeTone } from '../utils/status'
 
 /**
@@ -39,6 +40,16 @@ export function useRechargeOrderDetail() {
   const showTelegramPayHint = computed(() => isTelegramMiniApp.value && Boolean(payLink.value))
 
   const qrCodeContent = computed(() => String(payment.value?.qr_code || '').trim())
+
+  // 支付宝移动端唤起 APP（保留扫码，额外提供唤起按钮）
+  const isAlipayChannel = computed(() => isAlipayChannelType(payment.value?.channel_type))
+  const isMobile = computed(() => isMobileViewport())
+  const openAlipayApp = () => {
+    const url = qrCodeContent.value || payLink.value
+    if (!url) return
+    openAlipayAppUrl(url)
+  }
+
   const qrFallbackContent = computed(() => {
     if (interactionMode.value === 'redirect') return ''
     if (qrCodeContent.value) return ''
@@ -322,5 +333,8 @@ export function useRechargeOrderDetail() {
     checkPayment,
     handleOpenPayLink,
     handleCopyWalletAddress,
+    isAlipayChannel,
+    isMobile,
+    openAlipayApp,
   }
 }

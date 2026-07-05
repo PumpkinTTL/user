@@ -18,6 +18,7 @@ import {
 } from '../utils/paymentResumePolicy'
 import QRCode from 'qrcode'
 import { type PageAlert } from '../utils/alerts'
+import { isAlipayChannelType, isMobileViewport, openAlipayApp as openAlipayAppUrl } from '../utils/alipay'
 
 /**
  * 支付页共享逻辑（classic + vault 双模板共用）。
@@ -275,21 +276,12 @@ export function usePayment() {
   const showQRCode = computed(() => interactionMode.value === 'qr' && Boolean(qrDisplayContent.value))
 
   // 支付宝移动端唤起 APP（保留扫码，额外提供唤起按钮）
-  const isAlipayChannel = computed(() => paymentChannelType.value === 'alipay')
-  const isMobile = computed(() => typeof window !== 'undefined' && window.innerWidth < 768)
+  const isAlipayChannel = computed(() => isAlipayChannelType(paymentChannelType.value))
+  const isMobile = computed(() => isMobileViewport())
   const openAlipayApp = () => {
     const url = qrCodeContent.value || payLink.value
     if (!url) return
-    // 用支付宝官方 scheme 唤起 APP（appId=20000067 是支付宝内置 H5 容器）
-    const scheme = `alipays://platformapi/startapp?appId=20000067&url=${encodeURIComponent(url)}`
-    // 兜底：3 秒内 APP 未唤起（页面仍可见），降级直接跳转支付链接
-    const timer = window.setTimeout(() => {
-      if (!document.hidden) window.location.href = url
-    }, 3000)
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) window.clearTimeout(timer)
-    }, { once: true })
-    window.location.href = scheme
+    openAlipayAppUrl(url)
   }
 
   const qrImageUrl = ref('')

@@ -92,6 +92,12 @@
           <div v-if="showQRCode" class="flex flex-col items-center rounded-xl border bg-secondary p-5 text-center">
             <div class="mb-3 text-[13px] text-muted-foreground">{{ t('payment.qrTitle') }}</div>
             <div class="aspect-square w-full max-w-[220px] overflow-hidden rounded-md bg-white p-2"><img :src="qrImageUrl" alt="Recharge QR" class="h-full w-full object-contain" /></div>
+            <AlipayAppButton
+              v-if="isAlipayChannel && isMobile"
+              pill
+              class="mt-3"
+              @click="openAlipayApp"
+            />
             <div v-if="qrUsingPayLinkFallback" class="mt-3 text-[13px] text-muted-foreground">{{ t('payment.qrFallbackHint') }}</div>
           </div>
           <div class="rounded-xl border p-[18px]">
@@ -131,6 +137,7 @@ import { useI18n } from 'vue-i18n'
 import { AlertCircle, CheckCircle2 } from 'lucide-vue-next'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import AlipayAppButton from '../../components/payment/AlipayAppButton.vue'
 import { useRechargeOrderDetail } from '../../composables/useRechargeOrderDetail'
 
 const { t } = useI18n()
@@ -141,5 +148,6 @@ const {
   cryptoWalletAddress, cryptoPaymentDetails, hasCryptoPaymentDetails, feeRateDisplay,
   rechargeStatusText, rechargeStatusVariant, formatMoney, formatDate,
   loadDetail, checkPayment, handleOpenPayLink, handleCopyWalletAddress,
+  isAlipayChannel, isMobile, openAlipayApp,
 } = useRechargeOrderDetail()
 </script>
