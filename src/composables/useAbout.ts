@@ -2,6 +2,7 @@ import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAppStore } from '../stores/app'
 import { usePageSeo } from './usePageSeo'
+import { getContactList } from '../utils/contactIcons'
 
 /**
  * 关于页共享逻辑（classic + vault 双模板共用）。
@@ -57,7 +58,8 @@ export function useAbout() {
 
   const hasIntroduction = computed(() => introductionText.value !== '')
   const hasServices = computed(() => servicesTitle.value !== '' || serviceItems.value.length > 0)
-  const hasContactLinks = computed(() => !!(contactConfig.value?.telegram || contactConfig.value?.whatsapp))
+  const contactList = computed(() => getContactList(contactConfig.value as Record<string, unknown> | undefined))
+  const hasContactLinks = computed(() => contactList.value.length > 0)
   const hasContact = computed(() => contactTitle.value !== '' || contactText.value !== '' || hasContactLinks.value)
 
   onMounted(async () => {
@@ -68,6 +70,7 @@ export function useAbout() {
 
   return {
     contactConfig,
+    contactList,
     heroTitle,
     heroSubtitle,
     introductionText,
